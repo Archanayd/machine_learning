@@ -1,0 +1,53 @@
+
+# coding: utf-8
+
+# In[1]:
+
+
+import matplotlib.pyplot as plt
+from matplotlib import style
+get_ipython().magic(u'matplotlib inline')
+import numpy as np
+style.use('ggplot')
+
+
+# In[4]:
+
+
+##create starting data, its a dictionary where keys are the classes and lists of lists are featuresets
+data_dict = {-1:np.array([[1,7],
+                          [2,8],
+                          [3,8],]),
+             
+             1:np.array([[5,1],
+                         [6,-1],
+                         [7,3],])}
+
+
+# In[3]:
+
+
+print data_dict
+
+
+# In[6]:
+
+
+##create a SVM class
+class Support_Vector_Machine:
+    def __init__(self, visualization=True):   ##init menthod runs automatically when we call the class.
+        self.visualization = visualization
+        self.colors = {1:'r',-1:'b'} ##colors to the classes
+        if self.visualization:
+            self.fig = plt.figure()
+            self.ax = self.fig.add_subplot(1,1,1)
+    # train
+    def fit(self, data):
+        pass
+
+    def predict(self,features):
+        # sign( x.w+b )
+        classification = np.sign(np.dot(np.array(features),self.w)+self.b)
+
+        return classification
+
